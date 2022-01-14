@@ -23,16 +23,13 @@ const Container = () => {
     }
 
     const getSongs = async () => {
-        if (!receivedFile) {
             await db.songs.toArray()
                 .then(res => {
-                    console.log(res);
                     if (res.length > 0) {
                         setReceivedFile(res[res.length - 1])
                     }
                 })
                 .catch(e => console.log(e))
-        }
     }
 
     const getBase64 = (file) => {
@@ -56,7 +53,7 @@ const Container = () => {
     useEffect(() => {
         getSongs()
         console.log(receivedFile)
-    })
+    }, [uploadedFile.file, receivedFile])
 
     return (
         <div className="container">
@@ -72,8 +69,8 @@ const Container = () => {
                     <button onClick={onFileUpload}>Upload</button>
                 </div>
                 <div className="play-section">
-                    <h3>{ receivedFile ? "Play the song" : "Upload the song"}</h3>
-                    {receivedFile ? <p>{receivedFile.name}</p>: null}
+                    <h3>{receivedFile ? "Play the song" : "Upload the song"}</h3>
+                    {receivedFile ? <p>{receivedFile.name}</p> : null}
                     <audio src={receivedFile ? receivedFile.song : null} controls></audio>
                     <button onClick={resetDB}>Reset</button>
                 </div>

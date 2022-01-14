@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer>
             Developed by Anurag Saraswat 
-            <a href="/"><FaGithub /></a>
+            <a href="https://github.com/Anurag-Saraswat-01/IOT-Ready-Assignment" target="_blank" rel="noreferrer"><FaGithub /></a>
         </footer>
     )
 }
