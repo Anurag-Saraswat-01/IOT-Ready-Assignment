@@ -52,7 +52,6 @@ const Container = () => {
 
     useEffect(() => {
         getSongs()
-        console.log(receivedFile)
     }, [uploadedFile.file, receivedFile])
 
     return (
